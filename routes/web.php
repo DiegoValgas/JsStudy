@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
-Route::view('/prototypes', 'prototypes');
-Route::view('/copiando-objeto', 'copiando-objeto');
-Route::view('/criando-classe-por-funcao', 'criando-classe-por-funcao');
-Route::view('/add-motodos-ao-prototype', 'add-motodos-ao-prototype');
-Route::view('/criando-classe', 'criando-classe');
-Route::view('/adicionando-propriedades-a-classe', 'adicionando-propriedades-a-classe');
-Route::view('/symbol', 'symbol');
-Route::view('/get-e-set', 'get-e-set');
-Route::view('/heranca', 'heranca');
+Route::get('/', [HomeController::class, 'index']);

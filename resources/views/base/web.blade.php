@@ -5,41 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Js Study</title>
-
-    <style>
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            column-gap: 30px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
-        <aside>
-            <ul>
-                @foreach ($all_routes as $route)
-                    @continue($loop->iteration < 6)
-                    @continue($route->uri() == '/')
-                    <li>
-                        <a href="{{ url($route->uri()) }}">{{ $route->uri() }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </aside>
-        <div>
-            @yield('conteudo')
-            <pre>
-                <code id="show"></code>
-            </pre>
-        </div>
+    @yield('content')
+
+    <div id="loading" class="position-fixed top-0 bottom-0 start-0 end-0 d-none align-items-center justify-content-center bg-light bg-opacity-75">
+        <div class="spinner-border text-primary" role="status"></div>
     </div>
 
-    <div id="code">
-        @yield('scripts')
-    </div>
-    <script>
-        document.getElementById('show').innerHTML = document.getElementById('code').children[0].innerHTML;
-    </script>
+    @yield('scripts')
 </body>
 </html>
